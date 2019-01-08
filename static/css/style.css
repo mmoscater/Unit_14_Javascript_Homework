@@ -83,6 +83,17 @@ select {
   min-width: 70px;
 }
 
+#table-area td {
+  text-align: center;
+}
+
+.titlecase {
+  text-transform: capitalize;
+}
+
+.state {
+  text-transform: uppercase;
+}
 .loader {
   margin-top: 50px;
 }
