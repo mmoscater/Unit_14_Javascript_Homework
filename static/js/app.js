@@ -27,7 +27,7 @@ tableData.forEach((reportUFO) => {
                        cell.text(y);
                    } else {
                        var cell = ufoTable.append("td");
-                       cell.text(y);   
+                       cell.text(unescape(y));   
                    }    
                } 
            }
@@ -35,7 +35,7 @@ tableData.forEach((reportUFO) => {
       });
 });
 
-// Select the submit button
+// Select the submit button by the id
 var submit = d3.select("#filter-btn");
 
 submit.on("click", function() {
@@ -43,10 +43,10 @@ submit.on("click", function() {
  // Prevent the page from refreshing
  d3.event.preventDefault();
 
- // clear table rows
+ // clear all table rows
  ufoTable.selectAll('td').remove();
 
- // Select the input element and get the raw HTML node
+ // Select the input element
  var inputElement = d3.select("#datetime");
 
  // Get the value property of the input element
@@ -57,13 +57,11 @@ submit.on("click", function() {
  if (inputValue !== null){
  var filteredData = tableData.filter(reportUFO => reportUFO.datetime === inputValue);
 };
-//  if (inputCityalue !==null){
-//  var filteredData = tableData.filter(reportUFO => reportUFO.city === inputCityalue);
-//  };
 
  console.log(filteredData);
-
-//  var tbodyfiltered = d3.select("tbody");
+ 
+ // test unescape function Pedro & Ot recommended..
+//  console.log(unescape("&#44"));
 
  filteredData.forEach((reportUFO) => {
     // console.log(x);
@@ -87,11 +85,12 @@ submit.on("click", function() {
                     cell.text(y);
                 } else {
                     var cell = ufoTable.append("td");
-                    cell.text(y);   
+                    cell.text(unescape(y));   
                 }    
             } 
         }
     }
+   
    });
  });
 
